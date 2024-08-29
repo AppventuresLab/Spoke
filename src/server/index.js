@@ -54,7 +54,7 @@ if (!getConfig("SUPPRESS_DATABASE_AUTOCREATE", null, { truthy: 1 })) {
 setupUserNotificationObservers();
 const app = express();
 // Heroku requires you to use process.env.PORT
-const port = process.env.PORT || process.env.DEV_APP_PORT;
+const port = process.env.PORT || 3000;
 
 const httpServer = http.createServer(app);
 
