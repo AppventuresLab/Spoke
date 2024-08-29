@@ -54,7 +54,7 @@ if (!getConfig("SUPPRESS_DATABASE_AUTOCREATE", null, { truthy: 1 })) {
 setupUserNotificationObservers();
 const app = express();
 // Heroku requires you to use process.env.PORT
-const port = process.env.DEV_APP_PORT || process.env.PORT;
+const port = process.env.PORT || process.env.DEV_APP_PORT;
 
 const httpServer = http.createServer(app);
 
@@ -80,8 +80,8 @@ const server = new ApolloServer({
 
     return new GraphQLError(
       error &&
-      error.originalError &&
-      error.originalError.code === "UNAUTHORIZED"
+        error.originalError &&
+        error.originalError.code === "UNAUTHORIZED"
         ? "UNAUTHORIZED"
         : "Internal server error"
     );
